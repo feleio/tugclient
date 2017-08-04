@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package protos;
+
+service Tug {
+    rpc Connect (ConnectRequest) returns (ConnectReply) {}
+    rpc Pull (PullRequest) returns (PullReply) {}
+    rpc Reset (ResetRequest) returns (ResetReply) {}
+    rpc getState (GetStateRequest) returns (GetStateReply) {}
+}
+
+message ConnectRequest {
+    string name = 1;
+}
+
+message ConnectReply {
+    bool isSuccess = 1;
+}
+
+message ResetRequest {}
+
+message ResetReply {}
+
+message PullRequest {
+    string userId = 1;
+}
+
+message PullReply {}
+
+message GetStateRequest {}
+
+message GetStateReply {
+    int32 currentPosition = 1;
+    bool isFinished = 2;
+    string winner = 3;
+}
